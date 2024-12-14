@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        td, th {
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <table id="statsTable">
+        <tr>
+            <th>Месяц</th>
+            <th>Отдел 1</th>
+            <th>Отдел 2</th>
+        </tr>
+        <tr>
+            <td>Январь</td>
+            <td>50</td>
+            <td>120</td>
+        </tr>
+        <tr>
+            <td>Февраль</td>
+            <td>60</td>
+            <td>140</td>
+        </tr>
+        <tr>
+            <td>Март</td>
+            <td>125</td>
+            <td>115</td>
+        </tr>
+        <tr>
+            <td>Апрель</td>
+            <td>87</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>Май</td>
+            <td>95</td>
+            <td>80</td>
+        </tr>
+        <tr>
+            <td>Июнь</td>
+            <td>115</td>
+            <td>90</td>
+        </tr>
+        <tr>
+            <td>Июль</td>
+            <td>125</td>
+            <td>100</td>
+        </tr>
+    </table>
+
+    <div id="result"></div>
+
+    <script>
+        const table = document.querySelector("#statsTable");
+        let sum1 = 0;
+        let sum2 = 0;
+        for (let i = 1; i < table.rows.length; i++) 
+        {
+            const row = table.rows[i];
+            sum1 += parseInt(row.cells[1].textContent);
+            sum2 += parseInt(row.cells[2].textContent);
+        }
+        const totalRow = table.insertRow();
+        const cell1 = totalRow.insertCell();
+        const cell2 = totalRow.insertCell();
+        const cell3 = totalRow.insertCell();
+        cell1.textContent = "Итого";
+        cell2.textContent = sum1;
+        cell3.textContent = sum2; 
+        const resultDiv = document.querySelector("#result");
+        if (sum1 > sum2) 
+        {
+            resultDiv.textContent = "Отдел 1 сделал больше продаж";
+        }
+        else if (sum1 < sum2) 
+        {
+            resultDiv.textContent = "Отдел 2 сделал больше продаж";
+        }
+        else 
+        {
+            resultDiv.textContent = "Оба отдела сделали одинаково";
+        }
+    </script>
+</body>
+</html>
